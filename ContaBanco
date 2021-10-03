@@ -1,0 +1,138 @@
+algoritmo "MovimentaçãoContaBanco"
+// Função :
+// Autor :
+// Data : 07/09/2021
+// Seção de Declarações 
+var
+
+NC, CC, CP, D, N, X, Y, S, T, A, F: caractere
+Sdo, SQ, O, Dep: real
+Cont1: inteiro
+
+procedimento Pergunta()
+var
+Resp: caractere
+inicio
+Escreva("Deseja continuar[S/N]?")
+Leia (Resp)
+Se (Resp = "S") entao
+   Menu()
+senao
+Escreval ("Até mais")
+Fimse
+Fimprocedimento
+procedimento Menu()
+inicio
+Escreval ("    ")
+Escreval ("Escolha uma das opções a seguir: ")
+Escreval ("=============================")
+Escreval ("|          Menu             |")
+Escreval ("=============================")
+Escreval ("|[1] Para SALDO             |")
+Escreval ("|[2] Para SACAR             |")
+Escreval ("|[3] Para DEPOSITAR         |")
+Escreval ("|[4] Para PAGAR MENSALIDADE |")
+Escreval ("|[5] STATUS da conta        |")
+Escreval ("|[6] Para SAIR              |")
+Escreval ("|[7] Para FECHAR CONTA      |")
+Escreval ("=============================")
+Escreval ("  ")
+Leia (O)
+Escreval ("  ")
+   Escolha(O)
+        Caso 1
+             Escreval ("Seu saldo no momento é R$ ", Sdo)
+             Escreval ("  ")
+             Pergunta ()
+        Caso 2
+             Escreva ("Qual valor deseja sacar? ")
+             Leia (SQ)
+             Sdo <- Sdo - SQ
+             Se (SQ>Sdo) entao
+             Sdo <- Sdo + SQ
+             Escreval ("Não será possível efetivar saque, valor indicado maior que seu saldo")
+             senao
+             Escreval ("Saldo Atual é de R$", Sdo)
+             Escreval ("  ")
+             Fimse
+             Pergunta ()
+             Caso 3
+             Escreva ("Quanto deseja depositar, ", N, "? ")
+             Leia (Dep)
+             Sdo <- Sdo + Dep
+             Escreval (N, ", Seu saldo atual é de R$ ", Sdo)
+             Escreval ("  ")
+             Pergunta()
+         Caso 4
+              Se (Y = "CC") entao
+              Sdo <- Sdo - 12,00
+              Escreval ("Mensalidade paga, no valor de R$ 12,00")
+              Escreval ("Seu saldo agora é R$ ", Sdo)
+              senao
+              Sdo <- Sdo - 20,00
+              Escreval ("Mensalidade paga, no valor de R$ 20,00")
+              Escreval ("Seu saldo  agora é de R$", Sdo)
+              Fimse
+              Escreval ("  ")
+              Pergunta()
+         Caso 5
+               Escreval ("Olá, ", N, " o Status da sua conta é: ")
+               Escreval ("Nome: ", N)
+               Escreval ("Número da conta: ", cont1)
+               EscrevaL ("Sua conta é do tipo: ", Y)
+               Escreval ("Seu Saldo é de: ", Sdo)
+               Se (Sdo > O) entao
+                  Escreval ("Sua conta está aberta")
+               senao
+                    Escreval ("Sua conta está negativa, sua conta será fechada!")
+               Fimse
+               Escreval ("  ")
+               Pergunta()
+         Caso 6
+              Escreval ("Até mais, ", N, "!")
+         Caso 7
+              Escreval ("Que pena! Nos veremos em breve.")
+              Escreval ("Mas antes, você deve sacar todo o saldo remanescente")
+              Escreval ("Realizando procedimentos de fechamento de conta")
+              Escreval ("...")
+              Escreval ("...")
+              Escreval ("...")
+              Escreval ("...")
+              Escreval ("Fechamento de conta realizado, sua conta está com valor de R$ 0,00")
+              Escreval ("Sentiremos sua falta! Tenha um bom dia!")
+Fimescolha
+Fimprocedimento
+
+inicio
+Sdo <- 0
+Cont1 <- 0
+A <- "Aberta"
+F <- "Fechada"
+Escreva ("Deseja abrir uma conta [S/N]? ")
+Leia (X)
+Se (X = "S" )entao
+   Escreva ("Qual seu nome? ")
+   Leia (N)
+   Escreva ("Qual tipo de conta, ", N, ", deseja abrir [CC/CP]? ")
+   Leia (Y)
+   cont1 <- cont1 + 1
+   Escreval ("O número da sua conta é ", cont1)
+
+   Se (Y = "CC") entao
+      Sdo <- Sdo + 50,00
+      Escreval ("Seja Bem-Vindo, ", N, ", sua Conta Corrente foi criada")
+      Escreval (" e você tem um saldo de R$", Sdo)
+   Fimse
+   Se (Y = "CP") entao
+      Sdo <- Sdo + 150,00
+       EscrevaL("Sua Conta Poupança foi criada e você tem um saldo de R$ ", Sdo + SQ)
+   Fimse
+Menu()
+
+Fimse
+Se (X = "N") entao
+   Escreval ("Até mais!")
+Fimse
+
+
+fimalgoritmo
